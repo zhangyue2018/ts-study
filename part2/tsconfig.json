@@ -7,13 +7,29 @@
     "exclude": 不需要被编译的文件目录
     "extends": 定义被继承的配置文件
     "files": 指定被编译文件的列表，只有需要编译的文件少时才会用到
+    "compilerOptions": 编译器的选项
     */
     "include": [
         "./src/**/*"
     ],
-    "exclude": [
-        "./src/hello/**/*"
-    ],
-    "extends": "",
-    "files": []
+    // "exclude": [
+    //     "./src/hello/**/*"
+    // ],
+    // 编译器选项
+    "compilerOptions": {
+        // target用来指定ts被编译成的ES的版本
+        // 'es3', 'es5', 'es6', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext'
+        "target": "ES6",
+        // 指定要使用的模块化的规范
+        // 'none', 'commonjs', 'amd', 'system', 'umd', 'es6', 'es2015', 'es2020', 'es2022', 'esnext', 'node16', 'nodenext'
+        "module": "System",
+        // lib 用来指定项目中要使用的库,一般情况下不需要加这个属性(如果设置成[],说明不需要任何库)
+        // "lib": []
+        // outDir 用来指定编译后文件所在的目录
+        "outDir": "./dist",
+        // 将编译后的代码合并成一个文件，一般不用
+        // 设置outFile后，所有的全局作用域中的代码会合并到同一个文件中
+        "outFile": "./dist/app.js"
+
+    }
 }
