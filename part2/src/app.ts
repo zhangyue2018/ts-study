@@ -5,3 +5,7 @@ console.log('i am fine');
 let a = 10;
 
 console.log(b);
+
+function fn(this: Window) {
+    alert(this);
+}
