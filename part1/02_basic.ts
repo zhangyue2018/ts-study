@@ -87,3 +87,45 @@ l = 3;
 l = 4;
 l = 5;
 
+
+// 接口---ts里新增的，js里没有
+/**
+ * 接口用来定义一个类结构，用来定义一个类中应该包含哪些属性和方法
+ * 同时接口也可以当成类型声明去使用
+ * 声明的相同名称的接口会合并
+ */
+interface myInterface {
+    name: string;
+    work(): void;
+}
+
+interface myInterface {
+    age: number;
+}
+// 以下这种方式使用时，不能在对象里添加接口里未声明的属性和方法
+const obj: myInterface = {
+    name: 'zz',
+    age: 18,
+    work() {
+        console.log('work hard');
+    }
+}
+
+/**
+ * 定义类时，可以使类去实现一个接口
+ * 实现接口就是使类满足接口的要求
+ * 类继承的方式，子类里可以添加自定义的属性和方法
+ */
+
+interface myInter {
+    name: string;
+    sayHello(): void;
+}
+
+class MyClass implements myInter {
+    name: 'yy';
+    age: 18;
+    sayHello() {
+        console.log('hello');
+    }
+}
