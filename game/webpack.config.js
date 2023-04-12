@@ -11,7 +11,8 @@ module.exports = {
         // 告诉webpack，打包时不用箭头函数
         // 这样经webpack打包后的代码，在最外层不是由箭头函数包裹，而是由一个普通函数包裹
         environment: {
-            arrowFunction: false
+            arrowFunction: false,
+            const: false // 兼容ie10
         }
     },
     // 指定webpack打包时要使用的模块(如何打包)
