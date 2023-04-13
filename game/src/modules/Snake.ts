@@ -22,11 +22,17 @@ class Snake {
 
     // 设置蛇的X轴坐标
     set X(value: number) {
+        if(this.X === value) return; 
+        if(value < 0 ||  value > 290)
+            throw new Error('蛇撞墙了!'); 
         this.head.style.left = value + 'px';
     }
 
     // 设置蛇的Y轴坐标
     set Y(value: number) {
+        if(this.Y === value) return;
+        if(value < 0 || value > 290)
+            throw new Error('蛇撞墙了!');
         this.head.style.top = value + 'px';
     }
 

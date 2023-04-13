@@ -11,7 +11,7 @@ class GameControl {
     // 创建一个属性，存储按键的方向
     direction: string = 'Right';
     // 创建一个属性用来记录游戏是否结束
-    isLive: boolean = false;
+    isLive: boolean = true;
 
     constructor() {
         this.snake = new Snake();
@@ -62,12 +62,26 @@ class GameControl {
                 break;
         }
 
-        this.snake.X = X;
-        this.snake.Y = Y;
+        if(this.checkEat(X, Y)) {
+            this.food.change();
+            this.scorePanel.addScore();
+            this.snake.addBody();
+        }
+        try {
+            this.snake.X = X;
+            this.snake.Y = Y;
+        } catch(error) {
+            this.isLive = false;
+            alert((error as Error).message + 'Game Over!');
+        }        
 
         console.log('---run----');
 
-        this.isLive && setTimeout(this.run.bind(this), 800 - (this.scorePanel.level - 1) * 50);
+        this.isLive && setTimeout(this.run.bind(this), 300 - (this.scorePanel.level - 1) * 50);
+    }
+
+    checkEat(x: number, y: number) {
+        return x === this.food.X && y === this.food.Y;
     }
 
 }
