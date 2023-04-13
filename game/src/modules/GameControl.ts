@@ -67,16 +67,14 @@ class GameControl {
             this.scorePanel.addScore();
             this.snake.addBody();
         }
+
         try {
             this.snake.X = X;
             this.snake.Y = Y;
         } catch(error) {
             this.isLive = false;
             alert((error as Error).message + 'Game Over!');
-        }        
-
-        console.log('---run----');
-
+        }
         this.isLive && setTimeout(this.run.bind(this), 300 - (this.scorePanel.level - 1) * 50);
     }
 
